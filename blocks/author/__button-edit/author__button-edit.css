@@ -1,0 +1,13 @@
+.author__button-edit {
+  margin-top: 16px;
+  width: 24px;
+  height: 24px;
+  background-image: url(../../../images/Edit-Button.svg);
+  background-color: black;
+  border: 0px;
+  cursor: pointer;
+}
+
+.author__button-edit:hover {
+  opacity: 0.6;
+}

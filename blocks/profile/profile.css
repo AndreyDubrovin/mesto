@@ -1,0 +1,8 @@
+.profile {
+  margin: auto;
+  max-width: 882px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40px;
+}
