@@ -7,3 +7,9 @@
   justify-content: space-around;
   gap: 21px 18px;
 }
+
+@media screen and (max-width: 767px) {
+  .elements {
+    padding-top: 36px;
+  }
+ }

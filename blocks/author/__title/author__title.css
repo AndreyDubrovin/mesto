@@ -1,4 +1,5 @@
 .author__title {
+  width: 295px;
   margin: 16px 0 5px 0;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
@@ -6,4 +7,15 @@
   font-size: 42px;
   line-height: 56px;
   color: #FFFFFF;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
+
+@media screen and (max-width: 767px) {
+  .author__title {
+    font-size: 27px;
+    margin: 14px 0 0 0;
+    width: 201px;
+  }
+ }

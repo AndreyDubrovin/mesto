@@ -5,3 +5,9 @@
   background-image: url(../../../images/avatar.jpg);
   border-radius: 50%;
 }
+
+@media screen and (max-width: 767px) {
+  .author__avatar {
+    margin: auto;
+  }
+ }

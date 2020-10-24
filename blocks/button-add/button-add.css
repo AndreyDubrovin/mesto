@@ -5,8 +5,16 @@
   background-color: black;
   border: 0px;
   cursor: pointer;
+
 }
 
 .button-add:hover {
   opacity: 0.6;
 }
+
+@media screen and (max-width: 767px) {
+  .button-add {
+    width: 282px;
+    background-image: url(../../images/add-button-l.svg);
+  }
+ }
