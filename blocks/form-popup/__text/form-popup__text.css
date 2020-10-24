@@ -1,0 +1,22 @@
+.form-popup__text {
+  margin: auto;
+  margin-bottom: 29.74px;
+  padding: 0;
+  width: 358px;
+  min-height: 27.26px;
+  display: block;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0,0, .2);
+}
+
+.form-popup__text:nth-of-type(2) {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .form-popup__text {
+    width: 238px;
+    min-height: 27px;
+    margin-bottom: 30px;
+  }
+ }

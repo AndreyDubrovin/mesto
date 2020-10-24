@@ -1,0 +1,16 @@
+.popup__containers {
+  display: flex;
+  width: 488px;
+  height: 388px;
+  align-items: flex-end;
+}
+
+@media screen and (max-width: 767px) {
+  .popup__containers {
+    flex-wrap: wrap-reverse;
+    justify-content: flex-end;
+    width: 282px;
+    height: 360px;
+
+  }
+ }
