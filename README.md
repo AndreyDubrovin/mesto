@@ -9,3 +9,14 @@
 
 Ссылка на проект:
 1. [Место](https://andreydubrovin.github.io/mesto/)
+
+
+function openAndClosePopup () {
+  if (popup.classList.contains ('popup_opened')) {
+    popup.classList.toggle('popup_opened');
+  } else {
+    popup.classList.toggle('popup_opened');
+    formPopupName.setAttribute('value', nameOfAuthor.textContent);
+    formPopupSignature.setAttribute('value', signatureOfAuthor.textContent);
+  }
+}

@@ -2,31 +2,33 @@
 let popup = document.querySelector('.popup');
 let editButton = document.querySelector('.author__button-edit');
 let closeButton = document.querySelector('.popup__button-close');
-let saveButton = document.querySelector('.form-popup__button-save');
 let formElement = document.querySelector('.form-popup');
-let NameOfAuthor = document.querySelector('.author__title');
-let SignatureOfAuthor = document.querySelector('.author__subtitle');
-let formPopupName = document.querySelector('.form-popup__name');
-let formPopupSignature = document.querySelector('.form-popup__signature');
-
+let nameOfAuthor = document.querySelector('.author__title');
+let signatureOfAuthor = document.querySelector('.author__subtitle');
+let formPopupName = document.querySelector('.form-popup__text_form_name');
+let formPopupSignature = document.querySelector('.form-popup__text_form_signature');
 // Функция открывает и закрывает попап с выводом текста со страницы в value попапа
 function openAndClosePopup () {
+
   if (popup.classList.contains ('popup_opened')) {
     popup.classList.toggle('popup_opened');
   } else {
+    let newName = nameOfAuthor.textContent;
+    let newSignature = signatureOfAuthor.textContent;
     popup.classList.toggle('popup_opened');
-    formPopupName.setAttribute('value', NameOfAuthor.textContent);
-    formPopupSignature.setAttribute('value', SignatureOfAuthor.textContent);
+    formPopupName.value = newName;
+    formPopupSignature.value = newSignature;
   }
 }
 
+
 function formSubmitHandler (event) {
-event.preventDefault();
-let newName = formPopupName.value;
-let newSignature = formPopupSignature.value;
-NameOfAuthor.textContent = newName;
-SignatureOfAuthor.textContent = newSignature;
-openAndClosePopup ();
+  event.preventDefault();
+  let newName = formPopupName.value;
+  let newSignature = formPopupSignature.value;
+  nameOfAuthor.textContent = newName;
+  signatureOfAuthor.textContent = newSignature;
+  openAndClosePopup ();
 }
 
 editButton.addEventListener('click', openAndClosePopup);

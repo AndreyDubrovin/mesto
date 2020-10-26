@@ -7,80 +7,82 @@
   <title>Место - галерея возможностей</title>
 </head>
 <body class="body">
-  <div class="popup">
-    <div class="popup__containers">
-      <div class="popup__container">
-        <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="form-popup" name="test">
-            <fieldset class="form-popup__author">
-              <input class ="form-popup__text form-popup__name" type="text" name="name" value="">
-              <input class ="form-popup__text form-popup__signature" type="text" name="signature" value="">
-            </fieldset>
-            <button class="form-popup__button-save" type="submit">Cохранить</button>
-          </form>
+  <main>
+    <div class="popup">
+      <div class="popup__containers">
+        <div class="popup__container">
+          <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="form-popup" name="test">
+              <fieldset class="form-popup__author">
+                <input class ="form-popup__text form-popup__text_form_name" type="text" name="name" value="" placeholder="">
+                <input class ="form-popup__text form-popup__text_form_signature" type="text" name="signature" value="" placeholder="">
+              </fieldset>
+              <button class="form-popup__button-save" type="submit">Cохранить</button>
+            </form>
+        </div>
+        <button class="popup__button-close" type="button"></button>
       </div>
-      <button class="popup__button-close" type="submit"></button>
     </div>
-  </div>
-  <div class="page">
-    <header class="header">
-      <img class="header__logo" src="./images/Logo-mesto.svg" alt="Лого - Место">
-    </header>
-    <section class="profile">
-      <div class="author">
-        <div class="author__avatar"></div>
-        <div class="author__profile">
-          <h1 class="author__title">Жак-Ив Кусто</h1>
-          <button class="author__button-edit" type="submit"></button>
-          <p class="author__subtitle">Исследователь океана</p>
+    <div class="page">
+      <header class="header">
+        <img class="header__logo" src="./images/Logo-mesto.svg" alt="Лого - Место">
+      </header>
+      <section class="profile">
+        <div class="author">
+          <div class="author__avatar"></div>
+          <div class="author__profile">
+            <h1 class="author__title">Жак-Ив Кусто</h1>
+            <button class="author__button-edit" type="submit"></button>
+            <p class="author__subtitle">Исследователь океана</p>
+          </div>
         </div>
-      </div>
-      <button class="button-add" type="submit"></button>
-    </section>
-    <main class="elements">
-      <div class="element">
-        <img class="element__picture" src="./images/kremlin.jpg" alt="Кремль">
-        <div class="element__info">
-          <h2 class="element__title">Кремль</h2>
-          <button class="element__like"></button>
+        <button class="profile__button-add" type="button"></button>
+      </section>
+      <section class="elements">
+        <div class="element">
+          <img class="element__picture" src="./images/kremlin.jpg" alt="Кремль">
+          <div class="element__info">
+            <h2 class="element__title">Кремль</h2>
+            <button class="element__like" type="button"></button>
+          </div>
         </div>
-      </div>
-      <div class="element">
-        <img class="element__picture" src="./images/moscow-sity.jpg" alt="Москва-сити">
-        <div class="element__info">
-          <h2 class="element__title">Москва-сити</h2>
-          <button class="element__like"></button>
+        <div class="element">
+          <img class="element__picture" src="./images/moscow-sity.jpg" alt="Москва-сити">
+          <div class="element__info">
+            <h2 class="element__title">Москва-сити</h2>
+            <button class="element__like" type="button"></button>
+          </div>
         </div>
-      </div>
-      <div class="element">
-        <img class="element__picture" src="./images/Kazan.jpg" alt="Казань">
-        <div class="element__info">
-          <h2 class="element__title">Казань</h2>
-          <button class="element__like"></button>
+        <div class="element">
+          <img class="element__picture" src="./images/Kazan.jpg" alt="Казань">
+          <div class="element__info">
+            <h2 class="element__title">Казань</h2>
+            <button class="element__like" type="button"></button>
+          </div>
         </div>
-      </div>
-      <div class="element">
-        <img class="element__picture" src="./images/volgograd.jpg" alt="Волгоград">
-        <div class="element__info">
-          <h2 class="element__title">Волгоград</h2>
-          <button class="element__like"></button>
+        <div class="element">
+          <img class="element__picture" src="./images/volgograd.jpg" alt="Волгоград">
+          <div class="element__info">
+            <h2 class="element__title">Волгоград</h2>
+            <button class="element__like" type="button"></button>
+          </div>
         </div>
-      </div>
-      <div class="element">
-        <img class="element__picture" src="./images/Saint-Petersburg.jpg" alt="Санкт-Петербург">
-        <div class="element__info">
-          <h2 class="element__title">Санкт-Петербургasdasdasdadadsa</h2>
-          <button class="element__like"></button>
+        <div class="element">
+          <img class="element__picture" src="./images/Saint-Petersburg.jpg" alt="Санкт-Петербург">
+          <div class="element__info">
+            <h2 class="element__title">Санкт-Петербургa</h2>
+            <button class="element__like" type="button"></button>
+          </div>
         </div>
-      </div>
-      <div class="element">
-        <img class="element__picture" src="./images/Bridge.jpg" alt="Мосты">
-        <div class="element__info">
-          <h2 class="element__title">Мосты</h2>
-          <button class="element__like"></button>
+        <div class="element">
+          <img class="element__picture" src="./images/Bridge.jpg" alt="Мосты">
+          <div class="element__info">
+            <h2 class="element__title">Мосты</h2>
+            <button class="element__like" type="button"></button>
+          </div>
         </div>
-      </div>
-    </main>
+      </section>
+  </main>
     <footer class="footer">
       <p class="footer__text">&#127279; 2020 Дубровин Андрей</p>
     </footer>
