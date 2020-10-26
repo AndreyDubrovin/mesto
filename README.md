@@ -8,4 +8,4 @@
 Внешний вид сайта соответствует макету в **Figma**
 
 Ссылка на проект:
-1. [Путешествия по России](https://andreydubrovin.github.io/mesto/)
+1. [Место](https://andreydubrovin.github.io/mesto/)
