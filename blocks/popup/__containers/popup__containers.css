@@ -1,7 +1,7 @@
 .popup__containers {
   display: flex;
   width: 488px;
-  height: 388px;
+  min-height: 388px;
   align-items: flex-end;
 }
 
@@ -10,7 +10,7 @@
     flex-wrap: wrap-reverse;
     justify-content: flex-end;
     width: 282px;
-    height: 360px;
+    min-height: 360px;
 
   }
  }

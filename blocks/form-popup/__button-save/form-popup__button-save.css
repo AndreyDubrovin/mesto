@@ -1,5 +1,6 @@
 .form-popup__button-save {
   margin: 48px 36px 0 36px;
+  padding: 0;
   width: 358px;
   height: 50.15px;
   background: #000000;
@@ -24,5 +25,7 @@
     width: 238px;
     height: 46px;
     margin: 45px 22px 25px 22px;
+    font-size: 14px;
+    line-height: 17px;
   }
  }
