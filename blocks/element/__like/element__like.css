@@ -4,6 +4,7 @@
   background-image: url(../../../images/like.svg);
   border: 0px;
   background-color: white;
+  outline: none;
   cursor: pointer;
 }
 

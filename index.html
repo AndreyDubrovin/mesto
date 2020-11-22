@@ -7,11 +7,11 @@
   <title>Место - галерея возможностей</title>
 </head>
 <body class="body">
-    <div class="popup">
-      <div class="popup__containers">
+    <div class="popup popup_type_edit">
         <div class="popup__container">
+          <button class="popup__button-close popup__button-close_profile" type="button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="form-popup" name="test">
+            <form class="form-popup form-popup_profile" name="edit-profile">
               <fieldset class="form-popup__author">
                 <input class ="form-popup__text form-popup__text_form_name" type="text" name="name" value="" placeholder="">
                 <input class ="form-popup__text form-popup__text_form_signature" type="text" name="signature" value="" placeholder="">
@@ -19,7 +19,25 @@
               <button class="form-popup__button-save" type="submit">Cохранить</button>
             </form>
         </div>
-        <button class="popup__button-close" type="button"></button>
+    </div>
+    <div class="popup popup_type_add-card">
+        <div class="popup__container">
+          <button class="popup__button-close popup__button-close_add-card" type="button"></button>
+          <h2 class="popup__title">Новое место</h2>
+            <form class="form-popup form-popup_card" name="new-image">
+              <fieldset class="form-popup__author">
+                <input class ="form-popup__text form-popup__text_form_name-of-card" type="text" name="name" value="" placeholder="Название">
+                <input class ="form-popup__text form-popup__text_form_link" type="text" name="link" value="" placeholder="Ссылку на картинку">
+              </fieldset>
+              <button class="form-popup__button-save" type="submit">Cохранить</button>
+            </form>
+        </div>
+    </div>
+    <div class="popup popup_type_image">
+        <div class="popup__container-image">
+          <button class="popup__button-close popup__button-close_image" type="button"></button>
+          <img class="popup__image" src="" alt="">
+          <h2 class="popup__image-title"></h2>
       </div>
     </div>
     <div class="page">
@@ -39,55 +57,22 @@
         <button class="profile__button-add" type="button"></button>
       </section>
       <section class="elements">
-        <div class="element">
-          <img class="element__picture" src="./images/kremlin.jpg" alt="Кремль">
-          <div class="element__info">
-            <h2 class="element__title">Кремль</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__picture" src="./images/moscow-sity.jpg" alt="Москва-сити">
-          <div class="element__info">
-            <h2 class="element__title">Москва-сити</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__picture" src="./images/Kazan.jpg" alt="Казань">
-          <div class="element__info">
-            <h2 class="element__title">Казань</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__picture" src="./images/volgograd.jpg" alt="Волгоград">
-          <div class="element__info">
-            <h2 class="element__title">Волгоград</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__picture" src="./images/Saint-Petersburg.jpg" alt="Санкт-Петербург">
-          <div class="element__info">
-            <h2 class="element__title">Санкт-Петербургa</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__picture" src="./images/Bridge.jpg" alt="Мосты">
-          <div class="element__info">
-            <h2 class="element__title">Мосты</h2>
-            <button class="element__like" type="button"></button>
-          </div>
-        </div>
       </section>
     </main>
   </div>
     <footer class="footer">
       <p class="footer__text">&#127279; 2020 Дубровин Андрей</p>
     </footer>
-
-  <script src="./scripts/index.js"></script>
+    <template id="cards">
+      <div class="element">
+        <img class="element__picture" src="" alt="">
+        <button class="element__delete" type="button"></button>
+        <div class="element__info">
+          <h2 class="element__title"></h2>
+          <button class="element__like" type="button"></button>
+        </div>
+      </div>
+      </template>
+<script src="./scripts/index.js"></script>
 </body>
 </html>

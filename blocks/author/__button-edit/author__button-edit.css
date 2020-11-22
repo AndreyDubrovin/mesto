@@ -6,6 +6,7 @@
   background-color: black;
   border: 0px;
   cursor: pointer;
+  outline: none;
 }
 
 .author__button-edit:hover {
