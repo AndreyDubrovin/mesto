@@ -7,8 +7,6 @@ const imagePopup = document.querySelector('.popup_type_image');
 const closeButtonProfile = document.querySelector('.popup__button-close_profile');
 const closeButtonAddCard = document.querySelector('.popup__button-close_add-card');
 const closeButtonImage = document.querySelector('.popup__button-close_image');
-const elements = document.querySelector('.elements');
-const likeButton = document.querySelector('.element__like')
 const formProfile = document.querySelector('.form-popup_profile');
 const nameOfAuthor = document.querySelector('.author__title');
 const signatureOfAuthor = document.querySelector('.author__subtitle');
@@ -18,6 +16,8 @@ const formPopupNameCard = document.querySelector('.form-popup__text_form_name-of
 const formPopuplinkCard = document.querySelector('.form-popup__text_form_link');
 const cardSection = document.querySelector('.elements');
 const formCard = document.querySelector('.form-popup_card');
+const image = document.querySelector('.popup__image');
+const imageTitle = document.querySelector('.popup__image-title');
 const initialCards = [
   {
       name: 'Архыз',
@@ -55,13 +55,11 @@ function closePopup (close) {
   close.classList.toggle('popup_opened');
 };
 
-// функция заполнянт попап с картинкой
-function image (item, name) {
-  const image = document.querySelector('.popup__image');
-  const imageTitle = document.querySelector('.popup__image-title');
-  image.src = item.src;
-  imageTitle.textContent = name;
-  console.log(name);
+// функция заполняет попап с картинкой
+
+function fillImagePopup (UrlofImage, titleOfImage) {
+  image.src = UrlofImage.src;
+  imageTitle.textContent = titleOfImage;
 };
 
 // Функция изменяет имя автора
@@ -76,9 +74,10 @@ function formSubmitHandler (event) {
 function createCard(data) {
       const cardsTemplate = document.querySelector('#cards').content;
       const cardElement = cardsTemplate.cloneNode(true);
+      const elementPicture = cardElement.querySelector('.element__picture');
       cardElement.querySelector('.element__title').textContent = data.name;
-      cardElement.querySelector('.element__picture').src = data.link;
-      cardElement.querySelector('.element__picture').alt = data.name;
+      elementPicture.src = data.link;
+      elementPicture.alt = data.name;
       cardElement.querySelector('.element__like').addEventListener('click', function (evt) {
         evt.target.classList.toggle('element__like_active');
       });
@@ -86,12 +85,11 @@ function createCard(data) {
         const cardItem = evt.target.closest('.element');
         cardItem.remove();
       });
-      cardElement.querySelector('.element__picture').addEventListener('click', function (evt) {
+      elementPicture.addEventListener('click', function (evt) {
         const picture = evt.target;
         const name = data.name;
-        console.log(name);
         openPopup (imagePopup);
-        image(picture, name);
+        fillImagePopup(picture, name);
       });
       return cardElement;
 };
