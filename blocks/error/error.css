@@ -1,0 +1,14 @@
+.error {
+    margin: auto; 
+    margin-top: 5px;
+    padding: 0;
+    width: 358px;
+    min-height: 30px;
+    display: block;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+}

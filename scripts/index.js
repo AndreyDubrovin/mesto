@@ -18,6 +18,7 @@ const cardSection = document.querySelector('.elements');
 const formCard = document.querySelector('.form-popup_card');
 const image = document.querySelector('.popup__image');
 const imageTitle = document.querySelector('.popup__image-title');
+
 const initialCards = [
   {
       name: 'Архыз',
@@ -45,14 +46,35 @@ const initialCards = [
   }
 ];
 
-// Функция открывает попап
-function openPopup (open) {
-    open.classList.toggle('popup_opened');
+function showMessage() {
+
+}
+//Функция обрабатывает кнопку Escape
+function closePopupKeyEscape (evt) {
+  if (evt.key === 'Escape') {
+    closePopup(document.querySelector('.popup_opened'));
+  };
 };
 
-// Функция закрывает попап
+//Функция обрабатывает закрытие popup по overlay
+function closePopupClickOverlay (evt) {
+  if (evt.target === document.querySelector('.popup_opened')) {
+    closePopup(document.querySelector('.popup_opened'));
+  };
+};
+
+// Функция открывает попап + вешает обработчики ESC и клик по overlay
+function openPopup (open) {
+    open.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupKeyEscape);
+    open.addEventListener('mousedown', closePopupClickOverlay);
+};
+
+// Функция закрывает попап + убирает обработчики ESC и клик по overlay
 function closePopup (close) {
-  close.classList.toggle('popup_opened');
+  close.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupKeyEscape);
+  close.removeEventListener('mousedown', closePopupClickOverlay);
 };
 
 // функция заполняет попап с картинкой
@@ -72,26 +94,26 @@ function formSubmitHandler (event) {
 
 // функция создаёт карточку и слушает лайк, корзину и картинка
 function createCard(data) {
-      const cardsTemplate = document.querySelector('#cards').content;
-      const cardElement = cardsTemplate.cloneNode(true);
-      const elementPicture = cardElement.querySelector('.element__picture');
-      cardElement.querySelector('.element__title').textContent = data.name;
-      elementPicture.src = data.link;
-      elementPicture.alt = data.name;
-      cardElement.querySelector('.element__like').addEventListener('click', function (evt) {
-        evt.target.classList.toggle('element__like_active');
-      });
-      cardElement.querySelector('.element__delete').addEventListener('click', function (evt) {
-        const cardItem = evt.target.closest('.element');
-        cardItem.remove();
-      });
-      elementPicture.addEventListener('click', function (evt) {
-        const picture = evt.target;
-        const name = data.name;
-        openPopup (imagePopup);
-        fillImagePopup(picture, name);
-      });
-      return cardElement;
+  const cardsTemplate = document.querySelector('#cards').content;
+  const cardElement = cardsTemplate.cloneNode(true);
+  const elementPicture = cardElement.querySelector('.element__picture');
+   cardElement.querySelector('.element__title').textContent = data.name;
+   elementPicture.src = data.link;
+   elementPicture.alt = data.name;
+   cardElement.querySelector('.element__like').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('element__like_active');
+   });
+  cardElement.querySelector('.element__delete').addEventListener('click', function (evt) {
+    const cardItem = evt.target.closest('.element');
+    cardItem.remove();
+  });
+  elementPicture.addEventListener('click', function (evt) {
+    const picture = evt.target;
+    const name = data.name;
+    openPopup (imagePopup);
+     fillImagePopup(picture, name);
+   });
+   return cardElement;
 };
 
 // Функция добавляет новую карточку
@@ -99,8 +121,8 @@ function addcard (event) {
   event.preventDefault();
   const newcard = [
     {
-        name: formPopupNameCard.value,
-        link: formPopuplinkCard.value
+      name: formPopupNameCard.value,
+      link: formPopuplinkCard.value
     }];
     newcard.forEach(function (newcard) {
     const cardElement = createCard(newcard);
