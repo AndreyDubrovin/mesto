@@ -31,12 +31,11 @@ function setButtonState(button, isActive, config) {
   if (isActive) {
       button.classList.remove(config.inactiveButtonClass);
       button.disabled = false;
-  } else {
+    } else {
       button.classList.add(config.inactiveButtonClass);
       button.disabled = true;
   }
 }
-
 // Функция навешивает слушатель на input
 function setEventListeners(form, config) {
   const inputsList = form.querySelectorAll(config.inputSelector);

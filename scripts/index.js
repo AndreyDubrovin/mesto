@@ -129,6 +129,8 @@ function addcard (event) {
     cardSection.prepend(cardElement);
   });
   formCard.reset();
+  const button = formCard.querySelector('.form-popup__button-save');
+  setButtonState(button, false, validationConfig);
   closePopup(addPopup);
 };
 
