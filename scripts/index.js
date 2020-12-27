@@ -1,3 +1,5 @@
+import { Card } from './Card.js';
+import { validationConfig, FormValidator } from './FormValidator.js';
 // Находим формы в DOM
 const editPopup = document.querySelector('.popup_type_edit');
 const editButton = document.querySelector('.author__button-edit');
@@ -18,7 +20,6 @@ const cardSection = document.querySelector('.elements');
 const formCard = document.querySelector('.form-popup_card');
 const image = document.querySelector('.popup__image');
 const imageTitle = document.querySelector('.popup__image-title');
-
 const initialCards = [
   {
       name: 'Архыз',
@@ -46,9 +47,9 @@ const initialCards = [
   }
 ];
 
-function showMessage() {
 
-}
+
+
 //Функция обрабатывает кнопку Escape
 function closePopupKeyEscape (evt) {
   if (evt.key === 'Escape') {
@@ -77,12 +78,7 @@ function closePopup (close) {
   close.removeEventListener('mousedown', closePopupClickOverlay);
 };
 
-// функция заполняет попап с картинкой
 
-function fillImagePopup (UrlofImage, titleOfImage) {
-  image.src = UrlofImage.src;
-  imageTitle.textContent = titleOfImage;
-};
 
 // Функция изменяет имя автора
 function formSubmitHandler (event) {
@@ -92,29 +88,22 @@ function formSubmitHandler (event) {
   closePopup (editPopup);
 };
 
-// функция создаёт карточку и слушает лайк, корзину и картинка
-function createCard(data) {
-  const cardsTemplate = document.querySelector('#cards').content;
-  const cardElement = cardsTemplate.cloneNode(true);
-  const elementPicture = cardElement.querySelector('.element__picture');
-   cardElement.querySelector('.element__title').textContent = data.name;
-   elementPicture.src = data.link;
-   elementPicture.alt = data.name;
-   cardElement.querySelector('.element__like').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('element__like_active');
-   });
-  cardElement.querySelector('.element__delete').addEventListener('click', function (evt) {
-    const cardItem = evt.target.closest('.element');
-    cardItem.remove();
-  });
-  elementPicture.addEventListener('click', function (evt) {
-    const picture = evt.target;
-    const name = data.name;
-    openPopup (imagePopup);
-     fillImagePopup(picture, name);
-   });
-   return cardElement;
+function openImagePopup(name, link) {
+  openPopup (imagePopup);
+  fillImagePopup (name, link);
 };
+
+function fillImagePopup (titleOfImage,UrlofImage) {
+  image.src = UrlofImage;
+  imageTitle.textContent = titleOfImage;
+};
+
+// Создаём стартовые карточки
+initialCards.forEach((item) => {
+	const card = new Card(item, '#cards', openImagePopup);
+	const cardElement = card.generateCard();
+	cardSection.append(cardElement);
+});
 
 // Функция добавляет новую карточку
 function addcard (event) {
@@ -124,21 +113,17 @@ function addcard (event) {
       name: formPopupNameCard.value,
       link: formPopuplinkCard.value
     }];
-    newcard.forEach(function (newcard) {
-    const cardElement = createCard(newcard);
-    cardSection.prepend(cardElement);
-  });
+    newcard.forEach((item) => {
+      const card = new Card(item, '#cards', openImagePopup);
+      const cardElement = card.generateCard();
+      cardSection.prepend(cardElement);
+    }
+  );
   formCard.reset();
   const button = formCard.querySelector('.form-popup__button-save');
-  setButtonState(button, false, validationConfig);
+  cardFormValidator.setButtonState(false);
   closePopup(addPopup);
 };
-
-// добавляем карточки на страницу
-initialCards.forEach(function (initialCards) {
-  const cardElement = createCard(initialCards);
-  cardSection.append(cardElement);
-});
 
 // cлушаем события
 editButton.addEventListener('click', () => {
@@ -160,3 +145,11 @@ closeButtonImage.addEventListener('click', () => {
 });
 formProfile.addEventListener('submit', formSubmitHandler);
 formCard.addEventListener('submit', addcard);
+
+//валидация для popup_type_edit / editPopup
+const profileFormValidator = new FormValidator(formProfile, validationConfig);
+profileFormValidator.enableValidation();
+
+//валидация для popup_type_add-card / addPopup
+const cardFormValidator = new FormValidator(formCard, validationConfig);
+cardFormValidator.enableValidation();
