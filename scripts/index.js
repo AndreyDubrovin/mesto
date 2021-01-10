@@ -59,23 +59,23 @@ function closePopupKeyEscape (evt) {
 
 //Функция обрабатывает закрытие popup по overlay
 function closePopupClickOverlay (evt) {
-  if (evt.target === document.querySelector('.popup_opened')) {
-    closePopup(document.querySelector('.popup_opened'));
+  if (evt.target.classList.contains('popup_opened')) {
+    closePopup(evt.target);
   };
 };
 
 // Функция открывает попап + вешает обработчики ESC и клик по overlay
-function openPopup (open) {
-    open.classList.add('popup_opened');
-    document.addEventListener('keydown', closePopupKeyEscape);
-    open.addEventListener('mousedown', closePopupClickOverlay);
+function openPopup (popup) {
+  popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupKeyEscape);
+  popup.addEventListener('mousedown', closePopupClickOverlay);
 };
 
 // Функция закрывает попап + убирает обработчики ESC и клик по overlay
-function closePopup (close) {
-  close.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupKeyEscape);
-  close.removeEventListener('mousedown', closePopupClickOverlay);
+function closePopup (popup) {
+popup.classList.remove('popup_opened');
+document.removeEventListener('keydown', closePopupKeyEscape);
+popup.removeEventListener('mousedown', closePopupClickOverlay);
 };
 
 
@@ -98,11 +98,17 @@ function fillImagePopup (titleOfImage,UrlofImage) {
   imageTitle.textContent = titleOfImage;
 };
 
-// Создаём стартовые карточки
+// создаём карточку
+function createCard(item) {
+  const card = new Card(item, '#cards', openImagePopup);
+  const cardElement = card.generateCard();
+  return cardElement
+}
+
+// заполняем карточки на странице
 initialCards.forEach((item) => {
-	const card = new Card(item, '#cards', openImagePopup);
-	const cardElement = card.generateCard();
-	cardSection.append(cardElement);
+  const cardElement = createCard(item)
+  cardSection.append(cardElement);
 });
 
 // Функция добавляет новую карточку
@@ -114,13 +120,11 @@ function addcard (event) {
       link: formPopuplinkCard.value
     }];
     newcard.forEach((item) => {
-      const card = new Card(item, '#cards', openImagePopup);
-      const cardElement = card.generateCard();
+      const cardElement = createCard(item)
       cardSection.prepend(cardElement);
     }
   );
   formCard.reset();
-  const button = formCard.querySelector('.form-popup__button-save');
   cardFormValidator.setButtonState(false);
   closePopup(addPopup);
 };
