@@ -1,3 +1,4 @@
+import './index.css';
 import { editPopup, editButton, addButton, addPopup, imagePopup, formProfile, nameOfAuthor, signatureOfAuthor, formPopupName, formPopupSignature, cardSection, formCard, initialCards} from '../utils/constants.js';
 import { Card } from '../components/Card.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
