@@ -1,9 +1,9 @@
 export class Card {
-	constructor(data, cardSelector, openImagePopup) {
-		this._text = data.name;
-		this._image = data.link;
+	constructor({data,handleCardClick},cardSelector) {
+    this._text = data.name;
+    this._image = data.link;
+    this._imageClick = handleCardClick;
     this._cardSelector = cardSelector;
-    this._openImagePopup = openImagePopup;
 	}
 
 	_getTemplate() {
@@ -12,7 +12,6 @@ export class Card {
       .content
       .querySelector('.element')
       .cloneNode(true);
-
     return cardElement;
   }
 
@@ -35,8 +34,8 @@ export class Card {
       this._handleDeleteClick();
     });
     this._cardImage.addEventListener('click', () => {
-      this._handleImageClick();
-    }); 
+       this.handleCardClick();
+    });
   }
 
   _handleLikeClick() {
@@ -48,8 +47,8 @@ export class Card {
     cardItem.remove();
   }
 
-  _handleImageClick() {
-    this._openImagePopup(this._text, this._image);
+  handleCardClick() {
+    this._imageClick(this._image,this._text);
   }
 
 }
