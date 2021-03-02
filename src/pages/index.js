@@ -9,27 +9,27 @@ import { validationConfig, FormValidator } from '../components/FormValidator.js'
 
 
 
+//Функция создания карточки
+function createCard(item) {
+  const createCard = new Card({data: item,
+    handleCardClick: (image,text) => {
+      popupImage.open(image, text);
+    }
+  }, '#cards');
+  const cardElement = createCard.generateCard();
+  return cardElement
+}
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-// при клике на добавить картинку --> открыть попап
-const PopupAdd = new PopupWithForm(addPopup,{
+// Добавляем карточку на сайт
+const popupAdd = new PopupWithForm(addPopup,{
   handleFormSubmit: (item) => {
-    const cardAdd = new Section({items: [item],
-      renderer: (data) => {
-        const createCard = new Card({data: data,
-          handleCardClick: (image,text) => {
-            popupImage.open(image, text);
-          }
-        }, '#cards');
-        const cardElement = createCard.generateCard();
-        cardAdd.addItem(cardElement);
-      }
-    }, cardSection);
-    cardAdd.renderItems();
-  }});
-  PopupAdd.setEventListeners();
+    const cardElement = createCard(item)
+    cardList.addItem(cardElement);
+}});
+  popupAdd.setEventListeners();
 addButton.addEventListener('click', () => {
-    PopupAdd.open();
+    popupAdd.open();
     cardFormValidator.setButtonState(false);
   });
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -39,31 +39,29 @@ popupImage.setEventListeners();
 //Прогружаем карточки на странице
 const cardList = new Section({items: initialCards,
   renderer: (data) => {
-    const createCard = new Card({data: data,
-      handleCardClick: (image,text) => {
-        popupImage.open(image, text);
-      }
-    }, '#cards');
-    const cardElement = createCard.generateCard();
+    const cardElement = createCard(data)
     cardList.addItem(cardElement);
   }
 }, cardSection);
 cardList.renderItems();
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // при клике на редактировать профиль --> открыть попап
-const userInfo = new UserInfo(nameOfAuthor.textContent,signatureOfAuthor.textContent);
-const PopupEdit = new PopupWithForm(editPopup,{
+const userInfo = new UserInfo(
+  {
+    nameProfile: '.author__title',
+    infoProfile: '.author__subtitle'
+}
+);
+const popupEdit = new PopupWithForm(editPopup,{
   handleFormSubmit: (data) => {
     userInfo.setUserInfo(data);
   }});
-PopupEdit.setEventListeners();
+  popupEdit.setEventListeners();
 editButton.addEventListener('click', () => {
-  const userInfo = new UserInfo(nameOfAuthor.textContent,signatureOfAuthor.textContent);
 const currentUserInfo = userInfo.getUserInfo();
 formPopupName.value = currentUserInfo.name;
 formPopupSignature.value = currentUserInfo.info;
-PopupEdit.open();
-
+popupEdit.open();
 });
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //валидация для popup_type_edit / editPopup
