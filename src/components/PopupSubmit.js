@@ -4,7 +4,7 @@ export class PopupSubmit extends Popup {
   constructor(popup) {
     super(popup);
     this._submitButton = this._popup.querySelector('.form-popup__button-save');
-    this._button = this._popup.querySelector('button[type="submit"]');
+    this._button = this._popup.querySelector('button[type="button"]');
     this._buttonDefaultText = this._button.textContent;
   }
 
