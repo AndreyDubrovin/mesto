@@ -2,8 +2,40 @@
   width: 120px;
   height: 120px;
   margin-right: 30px;
-  background-image: url(../../../images/avatar.jpg);
   border-radius: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+.author__avatar:after{
+  content: '';
+  position: absolute;
+  top: 47px;
+  left: 47px;
+  background: url(../../../images/edit-avatar.svg);
+  width: 26px;
+  height: 26px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.author__avatar:before{
+  content: '';
+  position: absolute;
+  background-color: black;
+  width: 120px;
+  height: 120px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.author__avatar:hover:before{
+  opacity: 0.6;
+}
+.author__avatar:hover:after{
+  opacity: 1;
 }
 
 @media screen and (max-width: 767px) {
