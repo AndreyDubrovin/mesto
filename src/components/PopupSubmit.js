@@ -3,8 +3,8 @@ import { Popup } from '../components/Popup.js';
 export class PopupSubmit extends Popup {
   constructor(popup) {
     super(popup);
-    this._submitButton = this._popup.querySelector('.form-popup__button-save');
-    this._button = this._popup.querySelector('button[type="button"]');
+    this._submitButton = this._popup.querySelector('.popup__button-save');
+    this._button = this._popup.querySelector('button[type="submit"]');
     this._buttonDefaultText = this._button.textContent;
   }
 
