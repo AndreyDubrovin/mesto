@@ -13,14 +13,14 @@ const cardSection = document.querySelector('.elements');
 const avatar = document.querySelector('.author__avatar');
 const editAvatarForm = document.querySelector('.popup_type_edit-avatar');
 const apiConfig = {
-      baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-21',
-      headers: {
-        authorization: '73564780-432b-4cba-aeaa-8a9eddaf0c27',
-        'Content-Type': 'application/json'
-      },
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-21',
+  headers: {
+    authorization: '73564780-432b-4cba-aeaa-8a9eddaf0c27',
+    'Content-Type': 'application/json'
+  },
 
-  };
+};
 
-export { editPopup, editButton, addButton, addPopup, imagePopup, formProfile,formAvatar,formPopupName, formPopupSignature, cardSection, formCard,apiConfig,deletePopup,avatar,editAvatarForm};
+export { editPopup, editButton, addButton, addPopup, imagePopup, formProfile, formAvatar, formPopupName, formPopupSignature, cardSection, formCard, apiConfig, deletePopup, avatar, editAvatarForm };
 
 

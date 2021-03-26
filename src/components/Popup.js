@@ -16,7 +16,7 @@ export class Popup {
         this.close();
       }
     });
-}
+  }
 
   open() {
     this._popup.classList.add('popup_opened');

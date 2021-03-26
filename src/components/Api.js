@@ -1,26 +1,24 @@
 export class Api {
-  constructor({baseUrl,headers}) {
+  constructor({ baseUrl, headers }) {
     this.baseUrl = baseUrl;
     this.headers = headers;
+  }
+
+  _getResponseData(res) {
+    if (!res.ok) {
+      return Promise.reject(`Ошибка: ${res.status}`);
+    }
+    return res.json();
   }
 
   getAuthоr() {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка getAuthоr: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err); // выведем ошибку в консоль
-    });
+      .then(this._getResponseData)
   }
 
-  setAuthor(name,about) {
+  setAuthor(name, about) {
     return fetch(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
@@ -29,35 +27,17 @@ export class Api {
         about: about
       })
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка setAuthor: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err); // выведем ошибку в консоль
-    });
+      .then(this._getResponseData)
   }
 
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
       headers: this.headers
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        // если ошибка, отклоняем промис
-        return Promise.reject(`Ошибка getInitialCards: ${res.status}`);
-      })
-      .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
-      });
+      .then(this._getResponseData)
   }
 
-  AddCards(name,link) {
+  AddCards(name, link) {
     return fetch(`${this.baseUrl}/cards`, {
       method: 'POST',
       headers: this.headers,
@@ -66,16 +46,7 @@ export class Api {
         link: link
       })
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        // если ошибка, отклоняем промис
-        return Promise.reject(`Ошибка AddCards: ${res.status}`);
-      })
-      .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
-      });
+      .then(this._getResponseData)
   }
 
   deleteCard(cardId) {
@@ -83,16 +54,7 @@ export class Api {
       method: 'DELETE',
       headers: this.headers,
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        // если ошибка, отклоняем промис
-        return Promise.reject(`Ошибка DeleteCard: ${res.status}`);
-      })
-      .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
-      });
+      .then(this._getResponseData)
   }
 
   setLikeStatus(cardId, like) {
@@ -100,36 +62,17 @@ export class Api {
       method: like ? 'DELETE' : 'PUT',
       headers: this.headers,
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка setLikeStatus: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err); // выведем ошибку в консоль
-    });
-}
+      .then(this._getResponseData)
+  }
 
-editAvatar(link) {
-  return fetch(`${this.baseUrl}/users/me/avatar`, {
-    method: 'PATCH',
-    headers: this.headers,
-    body: JSON.stringify({
-      avatar: link,
+  editAvatar(link) {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar: link,
+      })
     })
-  })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      // если ошибка, отклоняем промис
-      return Promise.reject(`Ошибка AddCards: ${res.status}`);
-    })
-    .catch((err) => {
-      console.log(err); // выведем ошибку в консоль
-    });
-}
-
+      .then(this._getResponseData)
+  }
 }

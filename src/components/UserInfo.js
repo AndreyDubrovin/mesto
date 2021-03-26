@@ -1,5 +1,5 @@
 export class UserInfo {
-  constructor({nameProfile, infoProfile, userImg}) {
+  constructor({ nameProfile, infoProfile, userImg }) {
     this._name = document.querySelector(`${nameProfile}`);
     this._info = document.querySelector(`${infoProfile}`);
     this._userImg = document.querySelector(`${userImg}`);
@@ -7,8 +7,8 @@ export class UserInfo {
 
   getUserInfo() {
     return {
-     name: this._name.textContent,
-     info: this._info.textContent
+      name: this._name.textContent,
+      info: this._info.textContent
     }
 
   }
@@ -18,5 +18,5 @@ export class UserInfo {
     this._info.textContent = data.about;
     this._userImg.style.backgroundImage = `url(${data.avatar})`;
   }
- }
+}
 

@@ -1,5 +1,5 @@
 export class Card {
-	constructor({data,handleCardClick,handleCardDelete,handleCardlike},cardSelector,userId) {
+  constructor({ data, handleCardClick, handleCardDelete, handleCardlike }, cardSelector, userId) {
     this._text = data.name;
     this._image = data.link;
     this._likes = data.likes;
@@ -11,9 +11,9 @@ export class Card {
     this._cardLike = handleCardlike;
     this._cardSelector = cardSelector;
 
-	}
+  }
 
-	_getTemplate() {
+  _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
       .content
@@ -46,7 +46,7 @@ export class Card {
       this.handleDeleteClick();
     });
     this._cardImage.addEventListener('click', () => {
-       this.handleCardClick();
+      this.handleCardClick();
     });
   }
 
@@ -65,23 +65,23 @@ export class Card {
     return Boolean(this._likes.find(item => item._id === this._currectUser));
   }
 
-  LikesInfo(data) {
+  likesInfo(data) {
     this._likes = data.likes;
     this._updateLikes();
   }
 
-_handleLikeClick() {
-  this._updateLikes();
-  this._cardLike(this._cardId,this.isLiked());
+  _handleLikeClick() {
+    this._updateLikes();
+    this._cardLike(this._cardId, this.isLiked());
   }
 
   handleDeleteClick() {
     const cardItem = this._element.querySelector('.element__delete').closest('.element');
-    this._cardDelete(cardItem,this._cardId);
+    this._cardDelete(cardItem, this._cardId);
   }
 
   handleCardClick() {
-    this._imageClick(this._image,this._text);
+    this._imageClick(this._image, this._text);
   }
 
 }

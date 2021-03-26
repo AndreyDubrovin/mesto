@@ -8,27 +8,26 @@ export class PopupSubmit extends Popup {
     this._buttonDefaultText = this._button.textContent;
   }
 
-  open(cardId,{deleteCard}) {
+  open(cardId, { deleteCard }) {
     super.open();
     this._deleteCard = deleteCard;
     this._cardId = cardId;
- }
+  }
 
   setEventListeners() {
     super.setEventListeners();
     this._submitButton.addEventListener('click', () => {
-     this._popupDelete();
-      this.close();
+      this._popupDelete();
     });
   }
 
   _popupDelete() {
     this._deleteCard(this._cardId);
- }
+  }
 
- renderLoading(loading) {
-  this._button.textContent = loading ? 'Загрузка...' : this._buttonDefaultText;
+  renderLoading(loading) {
+    this._button.textContent = loading ? 'Загрузка...' : this._buttonDefaultText;
+  }
+
+
 }
-
-
- }
